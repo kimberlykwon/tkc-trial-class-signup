@@ -15,8 +15,7 @@ function App() {
           <p className="textBlurb">
             We always work around our families’ schedules. If any of these recommended times don’t work for you OR for holiday hours, please call (630) 708-3132.
           </p>
-          <WeekView/>
-          {/* <ScheduleGrid/> */}
+          <WeekView version = {"adults"}/>
         </div>
       </header>
     </div>

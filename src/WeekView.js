@@ -52,7 +52,7 @@ const weekSteps =[
 ]
 
 
-export default function WeekView(){
+export default function WeekView(props){
   const weekOutput = getThisWeek();
 
   // const classes = useStyles();
@@ -73,25 +73,27 @@ export default function WeekView(){
 
   return (
     <div>
-      <MobileStepper
+      {/* <MobileStepper
         // variant="dots"
         steps={2}
         position="static"
         activeStep={activeStep}
-        // className={classes.root}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === 1}>
-            Next Week
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-        }
-        backButton={
+        // className={classes.root} */}
+        {/* nextButton={ */}
+
+        {/* } */}
+        {/* backButton={ */}
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
             {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
             Prev Week
           </Button>
-        }
-      />
+          <Button size="small" onClick={handleNext} disabled={activeStep === 1}>
+            Next Week
+            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+          </Button>
+
+        {/* } */}
+      {/* /> */}
       <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -101,11 +103,12 @@ export default function WeekView(){
         {weekSteps.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) < 2 ? (
-              <ScheduleGrid weekOutput = {step.label}/>
+              <ScheduleGrid weekOutput = {step.label} type= {props.version}/>
             ) : null}
           </div>
         ))}
       </SwipeableViews>
+
 
     </div>
 );

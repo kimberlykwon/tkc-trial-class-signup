@@ -93,10 +93,37 @@ const lessRecClassTheme = createMuiTheme({
   },
 });
 
+const noClassTheme = createMuiTheme({
+  shadows: ["none"],
+  overrides: {
+    // Style sheet name ⚛️
+    MuiButton: {
+      text: {
+        padding: 0,
+        color: "#FFFFFF"
+      },
+      root: {
+        boxShadow: 0,
+      }
+    },
+    MuiPaper: {
+      // Name of the rule
+      root: {
+        // Some CSS
+        backgroundColor: "#FFFFFF",
+        boxShadow: 0,
+        color: "#FFFFFF",
+      },
+    },
+  },
+});
+
 const themeMapping = {
   "bestClass" : bestClassTheme,
   "recClass" : recClassTheme,
   "lessRecClass" : lessRecClassTheme,
+  "noClass" : noClassTheme,
+
 };
 
 export default function GridPart(props){
@@ -111,19 +138,31 @@ export default function GridPart(props){
       >
 
       <ThemeProvider theme={classTheme}>
-          <ThemeProvider theme={bestClassTheme}>
-            <ClassButton className = {props.dayOption["classes"][0]} classTime = {props.dayOption[props.dayOption["classes"][0]]["classTime"]}classDay = {props.day}/>
+          <ThemeProvider theme={themeMapping[props.dayOption[props.dayOption["classes"][0]]["classType"]]}>
+            <ClassButton className = {props.dayOption["classes"][0]} classTime = {props.dayOption[props.dayOption["classes"][0]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][0]]["disabled"]}/>
           </ThemeProvider>
-          <ThemeProvider theme={bestClassTheme}>
-            <ClassButton className = {props.dayOption["classes"][1]} classTime = {props.dayOption[props.dayOption["classes"][1]]["classTime"]}classDay = {props.day}/>
+
+          <ThemeProvider theme={themeMapping[props.dayOption[props.dayOption["classes"][1]]["classType"]]}>
+            <ClassButton className = {props.dayOption["classes"][1]} classTime = {props.dayOption[props.dayOption["classes"][1]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][1]]["disabled"]}/>
           </ThemeProvider>
-            <ClassButton className = {props.dayOption["classes"][2]} classTime = {props.dayOption[props.dayOption["classes"][2]]["classTime"]}classDay = {props.day}/>
-          <ThemeProvider theme={recClassTheme}>
-            <ClassButton className = {props.dayOption["classes"][3]} classTime = {props.dayOption[props.dayOption["classes"][3]]["classTime"]}classDay = {props.day}/>
+
+          <ThemeProvider theme={themeMapping[props.dayOption[props.dayOption["classes"][2]]["classType"]]}>
+            <ClassButton className = {props.dayOption["classes"][2]} classTime = {props.dayOption[props.dayOption["classes"][2]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][2]]["disabled"]}/>
           </ThemeProvider>
-          <ThemeProvider theme={lessRecClassTheme}>
-            <ClassButton className = {props.dayOption["classes"][4]} classTime = {props.dayOption[props.dayOption["classes"][4]]["classTime"]}classDay = {props.day}/>
+
+          <ThemeProvider theme={themeMapping[props.dayOption[props.dayOption["classes"][3]]["classType"]]}>
+            <ClassButton className = {props.dayOption["classes"][3]} classTime = {props.dayOption[props.dayOption["classes"][3]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][3]]["disabled"]}/>
           </ThemeProvider>
+
+          <ThemeProvider theme={themeMapping[props.dayOption[props.dayOption["classes"][4]]["classType"]]}>
+            <ClassButton className = {props.dayOption["classes"][4]} classTime = {props.dayOption[props.dayOption["classes"][4]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][4]]["disabled"]}/>
+          </ThemeProvider>
+
+          {props.dayOption["classes"].length != 5 &&
+            <ThemeProvider theme={themeMapping[props.dayOption[props.dayOption["classes"][5]]["classType"]]}>
+              <ClassButton className = {props.dayOption["classes"][5]} classTime = {props.dayOption[props.dayOption["classes"][5]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][5]]["disabled"]}/>
+            </ThemeProvider> 
+          }
       </ThemeProvider>
     </Grid> 
   );

@@ -11,6 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider, makeStyles} from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import * as emailjs from 'emailjs-com';
 
 
 const useStyles = makeStyles(theme => ({
@@ -66,10 +67,20 @@ export default function ClassButton(props){
 
   const [open2, setOpen2] = React.useState(false);
 
+  const state = {
+    "to_email": '',
+    "day": props.classDay,
+    "time": props.classTime,
+    "names": '',
+  }
+
+  const errors = {
+    "email": false,
+    "names": false,
+  }
   // const theme = useStyles();
 
   // const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
   function handleClickOpen() {
     setOpen(true);
   }
@@ -82,11 +93,49 @@ export default function ClassButton(props){
     // TODO: check if inputs entered
     // setOpen(false);
     // open another dialog box of confirmation 
-    setOpen(false);
-    setOpen2(true);
+    if (state["to_email"] === ""){
+      errors['email'] = true;
+    } else {
+      errors['email'] = false;
+    }
+    if (state["names"] === ""){
+      errors['names'] = true;
+    } else {
+      errors['names'] = false;
+    }
+    console.log(errors);
+    if (errors['email'] === false){
+      if (errors['names'] === false){
+        console.log("hits");
+        sendEmail();
+        setOpen(false);
+        setOpen2(true);
+      }
+    } 
   }
 
+  function sendEmail(){
+    var templateParams = {
+      to_email: state["to_email"],
+      day: state["day"],
+      time: state["time"],
+      names: state["names"]
+    }
+    emailjs.send('gmail', 'tkc_trial_class_confirmation_email', templateParams, 'user_1WYmp3qjQHUHT8dwIIgyl'   )
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(err) {
+       console.log('FAILED...', err);
+    });
+  }
 
+  function setEmail(val){
+    state["to_email"] = val;
+  }
+
+  function setNames(val){
+    state["names"] = val;
+  }
 
   function handleClickOpen2() {
     setOpen(true);
@@ -105,7 +154,7 @@ export default function ClassButton(props){
 
   return(
     <div>
-      <Button onClick={handleClickOpen}>
+      <Button onClick={handleClickOpen} disabled = {props.clickable}>
         <Paper className = {classes.otherClass}>
           <Box fontWeight = "fontWeightBold" paddingBottom = {1} > {props.classTime}</Box>
           {props.className}
@@ -126,6 +175,8 @@ export default function ClassButton(props){
               type="email"
               required
               fullWidth
+              error = {errors["email"]}
+              onChange = {event => setEmail(event.target.value)}
             />
             <TextField
               // autoFocus="false"
@@ -135,6 +186,8 @@ export default function ClassButton(props){
               type="text"
               required
               fullWidth
+              error = {errors["names"]}
+              onChange = {event => setNames(event.target.value)}
             />
           </DialogContent>
           <DialogActions>
@@ -147,7 +200,7 @@ export default function ClassButton(props){
           </DialogActions>
         </Dialog>
         <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title" >
-          <DialogTitle id="form-dialog-title">Register</DialogTitle>
+          <DialogTitle id="form-dialog-title">Registration Complete</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Thank you for signing up for the first trial class! You will see a confirmation email in your inbox soon. 

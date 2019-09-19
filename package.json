@@ -7,11 +7,13 @@
     "@material-ui/icons": "^4.4.1",
     "bootstrap": "^4.3.1",
     "date-fns": "^2.2.1",
+    "emailjs-com": "^2.4.0",
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-columns": "^1.2.1",
     "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-swipeable-views": "^0.13.3"
   },

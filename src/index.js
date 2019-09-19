@@ -9,7 +9,7 @@ import { Route, Link, HashRouter, BrowserRouter as Router } from 'react-router-d
 // ReactDOM.render(<App />, document.getElementById('root'));
 
 const routing = (
-  <HashRouter basename = {process.env.PUBLIC_URL}>
+  <HashRouter basename = {process.env.PUBLIC_URL} history = {hashHistory}>
     <div>
       <Route path="/" exact component={App} />
       <Route path="/j" component={App} />

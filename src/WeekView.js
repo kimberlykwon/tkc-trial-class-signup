@@ -94,8 +94,6 @@ export default function WeekView(props){
           </div>
         ))}
       </SwipeableViews>
-
-
     </div>
 );
 }

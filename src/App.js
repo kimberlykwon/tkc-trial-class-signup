@@ -21,7 +21,7 @@ function App() {
             <Route path="/j" render = {(props) => <WeekView {...props} version ={"adults"}/>} />
             <Route path="/k" render = {(props) => <WeekView {...props} version ={"kids"}/>}  />
           </div>
-]          </Router>
+          </Router>
         </div>
       </header>
     </div>

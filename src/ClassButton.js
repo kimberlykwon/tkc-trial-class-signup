@@ -8,11 +8,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider, makeStyles} from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import * as emailjs from 'emailjs-com';
 
+
+//TODO: make form full size on small screen
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -135,10 +137,6 @@ export default function ClassButton(props){
 
   function setNames(val){
     state["names"] = val;
-  }
-
-  function handleClickOpen2() {
-    setOpen(true);
   }
 
   function handleClose2() {

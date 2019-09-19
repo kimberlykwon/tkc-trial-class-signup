@@ -1,15 +1,14 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box'
 import green from '@material-ui/core/colors/green'
 import lightgreen from '@material-ui/core/colors/lightGreen'
 import lime from '@material-ui/core/colors/lime'
-import { ThemeProvider, makeStyles } from '@material-ui/styles';
+import { ThemeProvider} from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { borders } from '@material-ui/system';
+// import { borders } from '@material-ui/system';
 import ClassButton from './ClassButton';
+
+//TODO: do border for buttons
 
 const bestClass = green[500]; // #F44336
 const recClass = lightgreen[400]; // #E040FB
@@ -158,7 +157,7 @@ export default function GridPart(props){
             <ClassButton className = {props.dayOption["classes"][4]} classTime = {props.dayOption[props.dayOption["classes"][4]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][4]]["disabled"]}/>
           </ThemeProvider>
 
-          {props.dayOption["classes"].length != 5 &&
+          {props.dayOption["classes"].length !== 5 &&
             <ThemeProvider theme={themeMapping[props.dayOption[props.dayOption["classes"][5]]["classType"]]}>
               <ClassButton className = {props.dayOption["classes"][5]} classTime = {props.dayOption[props.dayOption["classes"][5]]["classTime"]}classDay = {props.day} clickable = {props.dayOption[props.dayOption["classes"][5]]["disabled"]}/>
             </ThemeProvider> 

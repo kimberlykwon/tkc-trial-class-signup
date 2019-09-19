@@ -1,7 +1,6 @@
 import React from 'react';
 import ScheduleGrid from './ScheduleGrid';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
+import { useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
@@ -23,7 +22,7 @@ figure out date data here
 function getThisWeek(){
   // const todayTime = new Date.now(); // time
   const todayDay = new Date().getDay();
-  const todayDate = new Date().getDate();
+  // const todayDate = new Date().getDate();
 
   const daysOfTheWeek = ["Mon", "Tues", "Wed", "Thurs"];
   const fullDaysOutput = [];
@@ -53,7 +52,7 @@ const weekSteps =[
 
 
 export default function WeekView(props){
-  const weekOutput = getThisWeek();
+  // const weekOutput = getThisWeek();
 
   // const classes = useStyles();
   const theme = useTheme();
@@ -73,27 +72,14 @@ export default function WeekView(props){
 
   return (
     <div>
-      {/* <MobileStepper
-        // variant="dots"
-        steps={2}
-        position="static"
-        activeStep={activeStep}
-        // className={classes.root} */}
-        {/* nextButton={ */}
-
-        {/* } */}
-        {/* backButton={ */}
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            Prev Week
-          </Button>
-          <Button size="small" onClick={handleNext} disabled={activeStep === 1}>
-            Next Week
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-
-        {/* } */}
-      {/* /> */}
+      <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+        Prev Week
+      </Button>
+      <Button size="small" onClick={handleNext} disabled={activeStep === 1}>
+        Next Week
+        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+      </Button>
       <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}

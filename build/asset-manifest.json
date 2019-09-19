@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e520444d.chunk.css",
+    "main.js": "/static/js/main.61c96ae3.chunk.js",
+    "main.js.map": "/static/js/main.61c96ae3.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.6da060c2.js",
+    "runtime~main.js.map": "/static/js/runtime~main.6da060c2.js.map",
+    "static/js/2.6c1d48de.chunk.js": "/static/js/2.6c1d48de.chunk.js",
+    "static/js/2.6c1d48de.chunk.js.map": "/static/js/2.6c1d48de.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.51daea05011917811facbbd0a30367b8.js": "/precache-manifest.51daea05011917811facbbd0a30367b8.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.e520444d.chunk.css.map": "/static/css/main.e520444d.chunk.css.map",
+    "static/media/index.css": "/static/media/BebasNeue-Regular.54413459.ttf"
+  }
+}

@@ -9,7 +9,7 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 // ReactDOM.render(<App />, document.getElementById('root'));
 
 const routing = (
-  <Router basename = "/">
+  <Router basename = {process.env.PUBLIC_URL}>
     <div>
       <Route path="/" exact component={App} />
       <Route path="/j" component={App} />

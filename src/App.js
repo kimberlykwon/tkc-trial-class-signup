@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import ScheduleGrid from './ScheduleGrid';
 import WeekView from './WeekView';
+import ReactDOM from 'react-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 
 
 function App() {
@@ -15,7 +17,14 @@ function App() {
           <p className="textBlurb">
             We always work around our families’ schedules. If any of these recommended times don’t work for you OR for holiday hours, please call (630) 708-3132.
           </p>
-          <WeekView version = {"adults"}/>
+          <Router>
+          <div>
+            <Route exact path="/" render = {(props) => <WeekView {...props} version ={"adults"}/>} />
+            <Route path="/j" render = {(props) => <WeekView {...props} version ={"adults"}/>} />
+            <Route path="/k" render = {(props) => <WeekView {...props} version ={"kids"}/>}  />
+          </div>
+          {/* <WeekView version = {"adults"}/> */}
+          </Router>
         </div>
       </header>
     </div>

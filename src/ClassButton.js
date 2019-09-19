@@ -129,7 +129,15 @@ export default function ClassButton(props){
     }, function(err) {
        console.log('FAILED...', err);
     });
+
+    emailjs.send('gmail', 'tkc_trial_class_confirmation_email_clone', templateParams, 'user_1WYmp3qjQHUHT8dwIIgyl'   )
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(err) {
+       console.log('FAILED...', err);
+    });
   }
+
 
   function setEmail(val){
     state["to_email"] = val;

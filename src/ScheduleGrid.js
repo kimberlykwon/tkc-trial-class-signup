@@ -9,8 +9,8 @@ import GridColumn from './GridColumn';
 class lists for two options (m,w/t,th)
 */
 const optionMW = {
-  "classes": ["Kids Taekwondo Class", "Basic Class", "Advanced/ Black Belt Class", "Family Class/ Black Belt Class", "Family Class"],
-  "Kids Taekwondo Class" : {
+  "classes": ["Kids Taekwondo Class\n(Best for 3-4 y/o)", "Basic Class", "Advanced/ Black Belt Class", "Family Class/ Black Belt Class", "Family Class"],
+  "Kids Taekwondo Class\n(Best for 3-4 y/o)" : {
     "classType": "bestClass",
     "classTime": "3:50 - 4:20pm",
     "disabled":  false,
@@ -38,8 +38,8 @@ const optionMW = {
 }
 
 const optionTTh = {
-  "classes": ["Kids Taekwondo Class",  "Advanced/ Black Belt Class", "Basic Class", "Demo Class", "Family Class/ Black Belt Class"],
-  "Kids Taekwondo Class" : {
+  "classes": ["Kids Taekwondo Class (Best for 3-4 y/o)",  "Advanced/ Black Belt Class", "Basic Class", "Demo Class", "Family Class/ Black Belt Class"],
+  "Kids Taekwondo Class (Best for 3-4 y/o)" : {
     "classType": "bestClass",
     "classTime": "3:50 - 4:20pm",
     "disabled": false,

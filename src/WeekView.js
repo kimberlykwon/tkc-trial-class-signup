@@ -19,34 +19,34 @@ import SwipeableViews from 'react-swipeable-views';
 /*
 figure out date data here
 */
-function getThisWeek(){
-  // const todayTime = new Date.now(); // time
-  const todayDay = new Date().getDay();
-  // const todayDate = new Date().getDate();
+// function getThisWeek(){
+//   // const todayTime = new Date.now(); // time
+//   const todayDay = new Date().getDay();
+//   // const todayDate = new Date().getDate();
 
-  const daysOfTheWeek = ["Mon", "Tues", "Wed", "Thurs"];
-  const fullDaysOutput = [];
+//   const daysOfTheWeek = ["Mon", "Tues", "Wed", "Thurs"];
+//   const fullDaysOutput = [];
 
-  // if today's date is in the middle of the week, get dates before and after and calculate next week
-  // TODO: figure out edge cases
-  if (todayDay >= 0 && todayDay <= 4){
-    for (var i = 0; i < 4; i++){
-      const offset = todayDay - i - 1;
-      fullDaysOutput[i] = daysOfTheWeek[i] + " " + (new Date().getMonth() + 1) + "/" + (new Date().getDate()-offset);
-    }
-  }
+//   // if today's date is in the middle of the week, get dates before and after and calculate next week
+//   // TODO: figure out edge cases
+//   if (todayDay >= 0 && todayDay <= 4){
+//     for (var i = 0; i < 4; i++){
+//       const offset = todayDay - i - 1;
+//       fullDaysOutput[i] = daysOfTheWeek[i] + " " + (new Date().getMonth() + 1) + "/" + (new Date().getDate()-offset);
+//     }
+//   }
 
-  return fullDaysOutput;
+//   return fullDaysOutput;
 
-  // if today's date is after thursday, calculate for next two weeks
-}
+//   // if today's date is after thursday, calculate for next two weeks
+// }
 
 const weekSteps =[
   {
-    label: getThisWeek(),
+    label: ["Mon 9/23", "Tues 9/24", "Wed 9/25", "Thurs 9/26"],
   },
   {
-    label: ["Mon 9/23", "Tues 9/24", "Wed 9/25", "Thurs 9/26"],
+    label: ["Mon 9/30", "Tues 10/1", "Wed 10/2", "Thurs 10/3"],
   }
 ]
 

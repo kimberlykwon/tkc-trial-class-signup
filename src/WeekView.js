@@ -43,10 +43,10 @@ figure out date data here
 
 const weekSteps =[
   {
-    label: ["Mon 12/30", "Tues 12/31", "Wed 1/1", "Thurs 1/2"],
+    label: ["Mon 1/13", "Tues 1/14", "Wed 1/15", "Thurs 1/6"],
   },
   {
-    label: ["Mon 1/6", "Tues 1/7", "Wed 1/8", "Thurs 1/9"],
+    label: ["Mon 1/20", "Tues 1/21", "Wed 1/22", "Thurs 1/23"],
   }
 ]
 

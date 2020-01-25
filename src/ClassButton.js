@@ -171,7 +171,7 @@ export default function ClassButton(props){
           <DialogTitle id="form-dialog-title">Register</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              You have chosen to have the free trial class on <b>{props.classDay}</b> at <b> {props.classTime} </b>. Enter the information below to complete registration. 
+              You have chosen to have the free trial class on <b>{props.classDay}</b> at <b>{props.classTime}</b>. Enter the information below to complete registration. 
             </DialogContentText>
             <TextField
               // autoFocus = "false"

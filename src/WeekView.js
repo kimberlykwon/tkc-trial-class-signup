@@ -8,16 +8,19 @@ import SwipeableViews from 'react-swipeable-views';
 
 function getThisWeek(){
   let curr = new Date();
+  if ((curr.getDay() === 4 && curr.getHours() >= 20) || curr.getDay() > 4){
+    curr = new Date(curr.getFullYear(), curr.getMonth(), curr.getDate()+7);
+  }
+  let nextWeekCurr = new Date(curr.getFullYear(), curr.getMonth(), curr.getDate()+7);
+
   let weekDayNames = ["Mon", "Tues", "Wed", "Thurs"];
   let week = [];
   
-  let nextWeekCurr = new Date(curr.getFullYear(), curr.getMonth(), curr.getDate()+7);
 
   for (let i = 1; i <= 4; i++) {
     let first = curr.getDate() - curr.getDay() + i;
   
     let day = new Date(curr.setDate(first));
-    console.log(day.getMonth());
     if (day.getMonth()<10){
       day = day.toISOString().slice(6, 10).replace("-", "/");
     } else {

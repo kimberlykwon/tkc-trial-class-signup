@@ -6,55 +6,53 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 
+function getThisWeek(){
+  let curr = new Date();
+  let weekDayNames = ["Mon", "Tues", "Wed", "Thurs"];
+  let week = [];
+  
+  let nextWeekCurr = new Date(curr.getFullYear(), curr.getMonth(), curr.getDate()+7);
 
-// const useStyles = makeStyles({
-//   root: {
-//     maxWidth: 400,
-//     flexGrow: 1,
-//   },
-// });
+  for (let i = 1; i <= 4; i++) {
+    let first = curr.getDate() - curr.getDay() + i;
+  
+    let day = new Date(curr.setDate(first));
+    console.log(day.getMonth());
+    if (day.getMonth()<10){
+      day = day.toISOString().slice(6, 10).replace("-", "/");
+    } else {
+      day = day.toISOString().slice(5, 10).replace("-", "/");
+    }
+    week.push(weekDayNames[i-1]+ " " + day);
+  }
 
-// do date calculation here
+  for (let i = 1; i <= 4; i++) {
+    let first = nextWeekCurr.getDate() - nextWeekCurr.getDay() + i;
+    let day = new Date(nextWeekCurr.setDate(first));
 
-/*
-figure out date data here
-*/
-// function getThisWeek(){
-//   // const todayTime = new Date.now(); // time
-//   const todayDay = new Date().getDay();
-//   // const todayDate = new Date().getDate();
+    if (day.getMonth()<10){
+      day = day.toISOString().slice(6, 10).replace("-", "/");
+    } else {
+      day = day.toISOString().slice(5, 10).replace("-", "/");
+    }
+    week.push(weekDayNames[i-1]+ " " + day);
+  }
 
-//   const daysOfTheWeek = ["Mon", "Tues", "Wed", "Thurs"];
-//   const fullDaysOutput = [];
+  return week;
+}
 
-//   // if today's date is in the middle of the week, get dates before and after and calculate next week
-//   // TODO: figure out edge cases
-//   if (todayDay >= 0 && todayDay <= 4){
-//     for (var i = 0; i < 4; i++){
-//       const offset = todayDay - i - 1;
-//       fullDaysOutput[i] = daysOfTheWeek[i] + " " + (new Date().getMonth() + 1) + "/" + (new Date().getDate()-offset);
-//     }
-//   }
-
-//   return fullDaysOutput;
-
-//   // if today's date is after thursday, calculate for next two weeks
-// }
 
 const weekSteps =[
   {
-    label: ["Mon 1/20", "Tues 1/21", "Wed 1/22", "Thurs 1/23"],
+    label: getThisWeek().splice(0,4),
   },
   {
-    label: ["Mon 1/27", "Tues 1/28", "Wed 1/29", "Thurs 1/30"],
+    label: getThisWeek().splice(4),
   }
 ]
 
 
 export default function WeekView(props){
-  // const weekOutput = getThisWeek();
-
-  // const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 

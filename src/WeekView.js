@@ -17,7 +17,7 @@ function getThisWeek(){
   let week = [];
   
 
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 1; i <= 4; i++) {
     let first = curr.getDate() - curr.getDay() + i;
   
     let day = new Date(curr.setDate(first));
@@ -26,7 +26,7 @@ function getThisWeek(){
     } else {
       day = day.toISOString().slice(5, 10).replace("-", "/");
     }
-    week.push(weekDayNames[i]+ " " + day);
+    week.push(weekDayNames[i-1]+ " " + day);
   }
 
   for (let i = 1; i <= 4; i++) {

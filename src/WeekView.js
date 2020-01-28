@@ -17,16 +17,23 @@ function getThisWeek(){
   let week = [];
   
 
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 1; i <= 4; i++) {
     let first = curr.getDate() - curr.getDay() + i;
+    console.log(first);
+    console.log(curr.getDate());
+    console.log(curr.getDay());
+
+    var tempCurr = new Date();
+    tempCurr.setDate(first);
   
-    let day = new Date(curr.setDate(first));
+    let day = tempCurr;
     if (day.getMonth()<10){
       day = day.toISOString().slice(6, 10).replace("-", "/");
     } else {
       day = day.toISOString().slice(5, 10).replace("-", "/");
     }
-    week.push(weekDayNames[i]+ " " + day);
+    console.log(day);
+    week.push(weekDayNames[i-1]+ " " + day);
   }
 
   for (let i = 1; i <= 4; i++) {

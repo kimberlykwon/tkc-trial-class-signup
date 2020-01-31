@@ -143,7 +143,7 @@ const optionMapping = {
 
 export default function ScheduleGrid(props){
   return (
-  <Columns columns="4">
+  <Columns columns= {4}>
     <div style = {{padding:10}}>  
       <p style = {{margin:5}}>{props.weekOutput[0]}</p>
       <GridColumn dayOption = {optionMapping[props.type][0]} day = {props.weekOutput[0]}/>

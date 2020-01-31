@@ -11,53 +11,46 @@ function getThisWeek(){
   if ((curr.getDay() === 4 && curr.getHours() >= 20) || curr.getDay() > 4){
     curr = new Date(curr.getFullYear(), curr.getMonth(), curr.getDate()+7);
   }
-  let nextWeekCurr = new Date(curr.getFullYear(), curr.getMonth(), curr.getDate()+7);
 
   let weekDayNames = ["Mon", "Tues", "Wed", "Thurs"];
-  let week = [];
-  
+  let weeks = {
+    "week1": [],
+    "week2": []
+  };
 
+  // for each day of the week
   for (let i = 1; i <= 4; i++) {
+    // find date corresponding to i
     let first = curr.getDate() - curr.getDay() + i;
-    console.log(first);
-    console.log(curr.getDate());
-    console.log(curr.getDay());
-
+    
+    // set month and date
     var tempCurr = new Date();
     tempCurr.setDate(first);
+    tempCurr.setMonth(curr.getMonth());
   
-    let day = tempCurr;
-    if (day.getMonth()<10){
-      day = day.toISOString().slice(6, 10).replace("-", "/");
-    } else {
-      day = day.toISOString().slice(5, 10).replace("-", "/");
-    }
-    console.log(day);
-    week.push(weekDayNames[i-1]+ " " + day);
+    weeks["week1"].push(weekDayNames[i-1]+ " " + stringifyDate(tempCurr));
+    weeks["week2"].push(weekDayNames[i-1]+ " " + stringifyDate(tempCurr.setDate(tempCurr.getDate()+7)));
   }
 
-  for (let i = 1; i <= 4; i++) {
-    let first = nextWeekCurr.getDate() - nextWeekCurr.getDay() + i;
-    let day = new Date(nextWeekCurr.setDate(first));
-
-    if (day.getMonth()<10){
-      day = day.toISOString().slice(6, 10).replace("-", "/");
-    } else {
-      day = day.toISOString().slice(5, 10).replace("-", "/");
-    }
-    week.push(weekDayNames[i-1]+ " " + day);
-  }
-
-  return week;
+  return weeks;
 }
 
+function stringifyDate(date){
+  var dt = new Date(date);
+  if (dt.getMonth()<10){
+    dt = dt.toISOString().slice(6, 10).replace("-", "/");
+  } else {
+    dt = dt.toISOString().slice(5, 10).replace("-", "/");
+  }
+  return dt;
+}
 
 const weekSteps =[
   {
-    label: getThisWeek().splice(0,4),
+    label: getThisWeek()["week1"],
   },
   {
-    label: getThisWeek().splice(4),
+    label: getThisWeek()["week2"],
   }
 ]
 

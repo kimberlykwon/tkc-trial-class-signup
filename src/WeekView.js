@@ -18,16 +18,23 @@ function getThisWeek(){
     "week2": []
   };
 
+  let sunday = 0;
+  if (curr.getDay() === 0){
+    sunday = curr.getDate();
+  } else {
+    sunday = curr.getDate()-curr.getDay();
+  }
+
   // for each day of the week
   for (let i = 1; i <= 4; i++) {
     // find date corresponding to i
-    let first = curr.getDate() - curr.getDay() + i;
-    
+    let first = sunday + i;
+
     // set month and date
     var tempCurr = new Date();
     tempCurr.setDate(first);
     tempCurr.setMonth(curr.getMonth());
-  
+
     weeks["week1"].push(weekDayNames[i-1]+ " " + stringifyDate(tempCurr));
     weeks["week2"].push(weekDayNames[i-1]+ " " + stringifyDate(tempCurr.setDate(tempCurr.getDate()+7)));
   }
@@ -37,10 +44,13 @@ function getThisWeek(){
 
 function stringifyDate(date){
   var dt = new Date(date);
+
+  // server based in ohio so alter timezone
+  dt.setHours(dt.getHours() - 1);
   if (dt.getMonth()<10){
-    dt = dt.toISOString().slice(6, 10).replace("-", "/");
+    dt = dt.toLocaleString().slice(0, 4);
   } else {
-    dt = dt.toISOString().slice(5, 10).replace("-", "/");
+    dt = dt.toLocaleString().slice(0, 5);
   }
   return dt;
 }

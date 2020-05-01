@@ -47,7 +47,6 @@ function stringifyDate(date){
 
   // server based in ohio so alter timezone
   dt.setHours(dt.getHours() - 1);
-  console.log(dt.getDate());
   if(dt.getMonth() < 10 && dt.getDate() < 10){
     dt = dt.toLocaleString().slice(0, 3);
   }
@@ -56,7 +55,6 @@ function stringifyDate(date){
   } else {
     dt = dt.toLocaleString().slice(0, 5);
   }
-  console.log(dt);
   return dt;
 }
 

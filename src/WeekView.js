@@ -47,10 +47,12 @@ function stringifyDate(date){
 
   // server based in ohio so alter timezone
   dt.setHours(dt.getHours() - 1);
-  if(dt.getMonth() < 10 && dt.getDate() < 10){
+
+ 
+  if((dt.getMonth()+1) < 10 && dt.getDate() < 10){
     dt = dt.toLocaleString().slice(0, 3);
   }
-  else if (dt.getMonth() <10){
+  else if ((dt.getMonth()+1 <10 && dt.getDate() >= 10) || (dt.getMonth()+1 >= 10 && dt.getDate() <10)){
     dt = dt.toLocaleString().slice(0, 4);
   } else {
     dt = dt.toLocaleString().slice(0, 5);
